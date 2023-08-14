@@ -1,0 +1,44 @@
+{% extends 'aplicacion/administracion.html' %}
+{% load static %}
+
+
+{% block contenido %}
+<div class="detail-box">
+  <div class="col-md-8 col-lg-6 mx-auto">
+    <div class="inner_detail-box">
+      <h1>
+        Peugeot Service<br>
+        
+      </h1>
+      <p>
+        Bienvenido al area de Service de Peugeot
+      </p>
+      <div>
+        <a href="" class="slider-link">
+          CONTACTANOS
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<body>
+<h1>
+  Unidades 0 KM PEUGEOT
+</h1>
+
+{% for service in autos %}
+<ul>
+  <li>
+    {{ service.id }} {{ service.turnos }} {{ service.mantenimiento }}
+  </li>
+</ul>
+{% endfor %}
+  
+
+
+
+{% endblock contenido %}
+  
+  </body>
+

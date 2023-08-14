@@ -1,0 +1,54 @@
+{% extends 'aplicacion/administracion.html' %}
+{% load static %}
+
+    {% block contenido %}
+    <div class="detail-box">
+      <div class="col-md-8 col-lg-6 mx-auto">
+        <div class="inner_detail-box">
+          <h1>
+            Peugeot Ventas<br>
+            
+          </h1>
+          <p>
+            Bienvenido al area de Ventas de vehiculos 0km de Peugeot
+          </p>
+          <div>
+            <a href="" class="slider-link">
+              CONTACTANOS
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <body>
+    <h1>
+      Unidades 0 KM PEUGEOT
+    </h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>marca</th>
+          <th>modelo</th>
+          <th>combustible</th>
+          <th>precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for auto in autos %}
+        <tr>
+          <td>{{ auto.marca }}</td>
+          <td>{{ auto.modelo }}</td>
+          <td>{{ auto.combustible }}</td>
+          <td>{{ auto.precio }}</td>
+        </tr>
+        {% endfor %}
+        
+      </tbody> 
+    </table>
+      
+  </body>
+
+
+    {% endblock contenido %}
+      
