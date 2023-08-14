@@ -42,7 +42,7 @@
   <header class="header_section">
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg custom_nav-container">
-        <a class="navbar-brand" href="{%static 'aplicacion/index.html'%}">
+        <a class="navbar-brand" href="{%static 'aplicacion/base.html'%}">
           <span>
             PEUGEOT
           </span>
@@ -497,7 +497,6 @@
                 CONTACTANOS
               </h2>
             </div>
-            {% block formulario %}
             <form action="" class="formulario_contacto" method="post">
               {% csrf_token%}
               <div>
@@ -518,7 +517,6 @@
                 </button>
               </div>
             </form>
-            {% endblock formulario%}
 
           </div>
         </div>
