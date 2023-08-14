@@ -1,31 +1,10 @@
-<section class="contact_section  ">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7 col-lg-6 ">
-          <div class="form_container">
-            <div class="heading_container ">
-              <h2>
-                CONTACTANOS
-              </h2>
-            </div>
-            <form action="">
-              <div>
-                <input type="text" placeholder="Nombre" />
-              </div>
-              <div>
-                <input type="text" placeholder="Telefono" />
-              </div>
-              <div>
-                <input type="email" placeholder="Email" />
-              </div>
-              <div>
-                <input type="text" class="message-box" placeholder="Mensaje" />
-              </div>
-              <div class="btn_box">
-                <button>
-                  Enviar
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>)
+{% extends 'aplicacion/base.html'%}
+
+{% block formulario %}
+  <form method="POST">
+    {%csrf_token %}
+    {{form.as_div}}
+    <input type="submit" value="Enviar">
+  </form>
+{% endblock formulario %}
+  

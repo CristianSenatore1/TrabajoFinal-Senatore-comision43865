@@ -497,6 +497,7 @@
                 CONTACTANOS
               </h2>
             </div>
+            {% block formulario %}
             <form action="" class="formulario_contacto" method="post">
               {% csrf_token%}
               <div>
@@ -517,6 +518,8 @@
                 </button>
               </div>
             </form>
+            {% endblock formulario%}
+
           </div>
         </div>
         <div class="col-md-5 col-lg-6">

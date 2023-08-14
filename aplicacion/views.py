@@ -29,11 +29,13 @@ def administracion(request):
 def contacto(request):
     if request.method == 'POST':
         form = ContactoForm(request.POST)
+        print(form)
+
         if form.is_valid():
             form.save()
             return redirect('formulario_contacto')
     else:
         form = ContactoForm()
 
-    return render(request, 'aplicacion/contactoForm.html')
+    return render(request, 'aplicacion/contactoForm.html',{'form':form})
     

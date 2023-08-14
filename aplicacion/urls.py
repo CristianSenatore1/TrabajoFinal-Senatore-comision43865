@@ -9,7 +9,7 @@ urlpatterns = [
     path('nuevos/', nuevos , name='nuevos'),
     path('usados/', usados , name='usados'),
     path('administracion/', administracion, name='administracion'),
-    path('aplicacion/', contacto, name='formulario_contacto'),
+    path('', contacto, name='formulario_contacto'),
 
 
 ]
