@@ -497,25 +497,10 @@
                 CONTACTANOS
               </h2>
             </div>
-            <form action="" class="formulario_contacto" method="post">
+            <form method="post">
               {% csrf_token%}
-              <div>
-                <input type="text" placeholder="Nombre" />
-              </div>
-              <div>
-                <input type="number" placeholder="Telefono" />
-              </div>
-              <div>
-                <input type="email" placeholder="Email" />
-              </div>
-              <div>
-                <input type="text" class="message-box" placeholder="Mensaje" />
-              </div>
-              <div class="btn_box">
-                <button>
-                  Enviar
-                </button>
-              </div>
+              {{ form.as_div }}
+              <input type="submit" value="Enviar">
             </form>
 
           </div>

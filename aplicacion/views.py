@@ -1,10 +1,20 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Nuevos ,Usados ,Service , Administracion
-from .forms import ContactoForm
+from .forms import *
 
 def index(request):
-    return render(request, "aplicacion/base.html")
+    if request.method == 'POST':
+        form = ContactoForm(request.POST)
+        print(form)
+
+        if form.is_valid():
+            form.save()
+            return redirect('inicio')
+    else:
+        form = ContactoForm()
+
+    return render(request, 'aplicacion/base.html',{'form':form})
 
 def nuevos(request):
     nuevos_data = Nuevos.objects.all()
@@ -26,16 +36,15 @@ def administracion(request):
     ctx = {"autos": admin_data}
     return render(request, 'aplicacion/administracion.html', ctx)
 
-def contacto(request):
+def usadoFormf(request):
     if request.method == 'POST':
-        form = ContactoForm(request.POST)
-        print(form)
-
-        if form.is_valid():
-            form.save()
-            return redirect('formulario_contacto')
+        formUsado = UsadoForm(request.POST)
+        if formUsado.is_valid():
+            informacion = formUsado.cleaned_data
+            usado = Usados(marca=informacion["marca"],modelo=informacion["modelo"],kilometraje=informacion["kilometraje"],precio=informacion["precio"])
+            usado.save()
+            return render(request, "aplicacion/base.html")
     else:
-        form = ContactoForm()
-
-    return render(request, 'aplicacion/contactoForm.html',{'form':form})
+        formUsado = UsadoForm()
     
+    return render ( request, "aplicacion/usadoForm.html",{ "form": formUsado }) 

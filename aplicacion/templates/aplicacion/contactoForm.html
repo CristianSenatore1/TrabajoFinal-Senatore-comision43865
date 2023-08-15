@@ -1,2 +1,10 @@
 {% extends 'aplicacion/base.html'%}
 
+{% block formulario %}
+  <form method="POST">
+    {%csrf_token %}
+    {{form.as_div}}
+    <input type="submit" value="Enviar">
+  </form>
+{% endblock formulario %}
+  

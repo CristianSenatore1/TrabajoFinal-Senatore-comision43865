@@ -42,13 +42,29 @@
   <header class="header_section">
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg custom_nav-container">
-        <a class="navbar-brand" href= "{%static 'aplicacion/index.html'%}">
+        <a class="navbar-brand" href= "../">
           <span>
             PEUGEOT
           </span>
         </a>
-        <div class="container">
-          <a class="navbar-brand" href="../">Inicio</a>
+        <div class="" id="">
+
+          <div class="custom_menu-btn">
+            <button onclick="openNav()">
+              <span class="s-1"> </span>
+              <span class="s-2"> </span>
+              <span class="s-3"> </span>
+            </button>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="{% url 'admin:index'%}">Login</a>
+                <a href="{% url 'usados'%}">Usados</a>
+                <a href="{% url 'service'%}">Service</a>
+                <a href="{% url 'nuevos'%}">Nuevos</a>
+                <a href="{% url 'administracion'%}">Administracion</a>
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
     </div>

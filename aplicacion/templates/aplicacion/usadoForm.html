@@ -1,0 +1,41 @@
+{% extends 'aplicacion/administracion.html' %}
+{% load static %}
+
+    {% block contenido %}
+    <div class="detail-box">
+      <div class="col-md-8 col-lg-6 mx-auto">
+        <div class="inner_detail-box">
+          <h1>
+            Carga de Unidades de ocasion<br>
+            
+          </h1>
+          <p>
+            Aqui podras cargar al stock las nuevas unidades que ingresan
+          </p>
+          <div>
+            <a href="" class="slider-link">
+              CONTACTANOS
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <body>
+    <h1>
+      Completa todos los campos
+    </h1>
+    <form action="" method="post">
+        {%csrf_token%}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type="submit" value="Enviar">
+    </form>
+    
+      
+  </body>
+
+
+    {% endblock contenido %}
+      
