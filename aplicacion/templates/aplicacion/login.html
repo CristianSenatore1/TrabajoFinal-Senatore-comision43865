@@ -1,0 +1,42 @@
+{% extends 'aplicacion/administracion.html' %}
+{% load static %}
+
+    {% block contenido %}
+    <div class="detail-box">
+      <div class="col-md-8 col-lg-6 mx-auto">
+        <div class="inner_detail-box">
+          <h1>
+            Login<br>
+          </h1>
+          {% if mensaje %}
+          <h4>
+            <p style="color:red" align="center">
+            {{ mensaje }}
+            </p>
+          </h4>
+          {% endif %}
+
+          <form action="" method="POST">
+            {%csrf_token%}
+            <table>
+                {{form.as_table}}
+            </table>
+            <button type="submit">Iniciar Sesion</button>
+          </form>
+
+          <p>
+            Bienvenido al area de USUARIOS de Peugeot
+          </p>
+          <div>
+            <a href="{% url 'create_nuevo' %}" class="slider-link">
+              Cargar nuevos modelos
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <body>
+
+    {% endblock contenido %}
+      

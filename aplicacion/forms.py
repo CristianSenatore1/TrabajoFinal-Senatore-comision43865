@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contacto, Usados, Nuevos, Service, Administracion
+from .models import Usados, Nuevos, Service, Administracion, Contacto
 
 class ContactoForm(forms.ModelForm):
 

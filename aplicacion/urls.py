@@ -2,7 +2,7 @@ from django.urls import path, include
 from .views import *
 from .models import *
 from . import views
-
+from django.contrib.auth.views import LogoutView
 urlpatterns = [
     path('', index, name="inicio" ),
     path('nuevos/', NuevosList.as_view(), name='nuevos'),
@@ -29,7 +29,10 @@ urlpatterns = [
     path('delete_nuevo/<int:pk>/', NuevosDelete.as_view(), name='delete_nuevo'),
     path('delete_service/<int:pk>/', ServiceDelete.as_view(), name='delete_service'),
     path('delete_administracion/<int:pk>/', AdministracionDelete.as_view(), name='delete_administracion'),
-
+#-------------------------
+    path('login', login_request, name='login'),
+    path('logout', LogoutView.as_view(template_name="aplicacion/logout.html"), name='logout'),
+    path('register/', register, name='register'),
 
 
 ]
