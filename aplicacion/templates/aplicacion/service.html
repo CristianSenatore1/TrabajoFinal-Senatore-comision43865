@@ -1,7 +1,6 @@
 {% extends 'aplicacion/administracion.html' %}
 {% load static %}
 
-
 {% block contenido %}
 <div class="detail-box">
   <div class="col-md-8 col-lg-6 mx-auto">
@@ -14,8 +13,8 @@
         Bienvenido al area de Service de Peugeot
       </p>
       <div>
-        <a href="" class="slider-link">
-          CONTACTANOS
+        <a href="{% url 'serviceForm' %}" class="slider-link">
+          Cargar Turnos
         </a>
       </div>
     </div>

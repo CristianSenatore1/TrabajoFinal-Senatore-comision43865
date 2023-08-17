@@ -1,6 +1,50 @@
 {% extends 'aplicacion/administracion.html' %}
 {% load static %}
 
+{% block contenido %}
+<div class="detail-box">
+  <div class="col-md-8 col-lg-6 mx-auto">
+    <div class="inner_detail-box">
+      <h1>
+        Peugeot Service<br>
+        
+      </h1>
+      <p>
+        Bienvenido al area de Service de Peugeot
+      </p>
+      <div>
+        <a href="{% url 'serviceForm' %}" class="slider-link">
+          Cargar Turnos
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<body>
+<h1>
+  Unidades 0 KM PEUGEOT
+</h1>
+
+{% for service in autos %}
+<ul>
+  <li>
+    {{ service.id }} {{ service.turnos }} {{ service.mantenimiento }}
+  </li>
+</ul>
+{% endfor %}
+  
+
+
+
+{% endblock contenido %}
+  
+  </body>
+
+
+  {% extends 'aplicacion/administracion.html' %}
+{% load static %}
+
     {% block contenido %}
     <div class="detail-box">
       <div class="col-md-8 col-lg-6 mx-auto">
@@ -13,8 +57,8 @@
             Bienvenido al area de Ventas de vehiculos 0km de Peugeot
           </p>
           <div>
-            <a href="" class="slider-link">
-              CONTACTANOS
+            <a href="{% url 'nuevoForm' %}" class="slider-link">
+              Cargar nuevos modelos
             </a>
           </div>
         </div>
@@ -28,19 +72,37 @@
     <table class="table">
       <thead>
         <tr>
-          <th>marca</th>
-          <th>modelo</th>
-          <th>combustible</th>
-          <th>precio</th>
+          <th>ID</th>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Combustible</th>
+          <th>Precio</th>
+          <th>Acciones</th>
+
         </tr>
       </thead>
       <tbody>
         {% for auto in autos %}
         <tr>
+          <td>{{ auto.id }}</td>
           <td>{{ auto.marca }}</td>
           <td>{{ auto.modelo }}</td>
           <td>{{ auto.combustible }}</td>
           <td>{{ auto.precio }}</td>
+          <td>
+            <a
+             href=""
+             class="btn btn-primary"
+             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; ---bs-btn-padding-siza: .75rem;"
+             ><i class="fa fa-trash fa-sm" title="Edit Record"></i>
+            </a>
+            <a
+             href=""
+             class="btn btn-primary"
+             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; ---bs-btn-padding-siza: .75rem;"
+             ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+            </a>
+          </td>
         </tr>
         {% endfor %}
         

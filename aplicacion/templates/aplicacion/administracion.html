@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
   {% load static %}
   
@@ -44,7 +45,7 @@
       <nav class="navbar navbar-expand-lg custom_nav-container">
         <a class="navbar-brand" href= "../">
           <span>
-            PEUGEOT
+            PEUGEOT - Inicio
           </span>
         </a>
         <div class="" id="">
@@ -129,8 +130,8 @@
             Bienvenido al area administrativa de Peugeot
           </p>
           <div>
-            <a href="" class="slider-link">
-              CONTACTANOS
+            <a href="{% url 'administracionForm' %}" class="slider-link">
+              Cargar nuevos Clientes
             </a>
           </div>
         </div>
@@ -152,165 +153,116 @@
     {% endblock contenido %}
 
   
-  <!-- contact section -->
-  <section class="contact_section  ">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7 col-lg-6 ">
-          <div class="form_container">
-            <div class="heading_container ">
-              <h2>
-                CONTACTANOS
-              </h2>
-            </div>
-            <form action="">
-              <div>
-                <input type="text" placeholder="Nombre" />
-              </div>
-              <div>
-                <input type="text" placeholder="Numero de Telefono" />
-              </div>
-              <div>
-                <input type="email" placeholder="Email" />
-              </div>
-              <div>
-                <input type="text" class="message-box" placeholder="consulta" />
-              </div>
-              <div class="btn_box">
-                <button>
-                  Enviar
-                </button>
-              </div>
-            </form>
-          </div>
+
+<!-- info section -->
+<section class="info_section ">
+  <div class="container">
+    <div class="row info_main_row">
+      <div class="col-md-6 col-lg-3">
+        <div class="info_detail">
+          <h5>Nuestros Horarios:</h5>
+          <h4>
+            Area comercial
+          </h4>
+          <p class="mb-0">
+            <h6>lun-vier 8:30 a 19:30</h6>
+            <h6>sab 9:00 a 18:30 </h6>
+            <h6>dom y feriados  cerrado</h6>
+          </p>
         </div>
-        <div class="col-md-5 col-lg-6">
-          <div class="subscribe-box">
-            <h3>
-              Subscribete para recibir nuestras Noticias y Promociones!
-            </h3>
-            <p>
-              Neque, omnis? Maiores consectetur molestiae assumenda earum ea exercitationem velit tempora molestias quae, neque voluptas magnam maxime, repudiandae voluptatum quaerat tempore accusamus.
-            </p>
-            <form action="">
-              <input type="email" placeholder="Enter your email">
-              <button>
-                Subscribe
-              </button>
-            </form>
-          </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="info_detail">
+          <h4>  </h4>
+          <h4>
+            administracion y taller
+          </h4>
+          <p class="mb-0">
+            <h6>lun-vier 8:30 a 19:30</h6>
+            <h6>sab 9:00 a 13:00 </h6>
+            <h6>dom y feriados  cerrado</h6>
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <h4>
+          Contact Us
+        </h4>
+        <div class="info_contact">
+          <a href="https://www.google.it/maps/place/Autocity+C%C3%B3rdoba/@-31.4137746,-64.2714914,17z/data=!3m1!4b1!4m14!1m7!3m6!1s0x943298c95ab9728b:0xa946f51d4f2f3fc9!2sAvant+Peugeot+Concesionario+Oficial!8m2!3d-31.4138298!4d-64.2688522!16s%2Fg%2F1tj22m_1!3m5!1s0x94329f6a3304eefb:0xfcc4abf62106ba2f!8m2!3d-31.4137746!4d-64.2689165!16s%2Fg%2F11g6ltzrxc?entry=ttu">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <span>
+              Ubicacion
+            </span>
+          </a>
+          <a href="">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <span>
+              +549 3513784849
+            </span>
+          </a>
+          <a href="">
+            <i class="fa fa-envelope"></i>
+            <span>
+              crsenatore.cs@gmail.com
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <h4>
+          Siguenos
+        </h4>
+        <div class="social_box">
+          <a href="https://es-la.facebook.com/Autocity.avant/">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+          <a href="https://twitter.com/peugeotarg">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+          <a href="https://ar.linkedin.com/company/peugeot-argentina">
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.instagram.com/peugeotarg/">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
         </div>
       </div>
     </div>
-  </section>
-  <!-- end contact section -->
+  </div>
+</section>
 
-  <!-- info section -->
-  <section class="info_section ">
-    <div class="container">
-      <div class="row info_main_row">
-        <div class="col-md-6 col-lg-3">
-          <div class="info_insta">
-            <h4>
-              <a href="index.html" class="navbar-brand m-0 p-0">
-                <span>
-                  Shapel
-                </span>
-              </a>
-            </h4>
-            <p class="mb-0">
-              Asperiores at, error, delectus aut voluptatem provident cum quam magni necessitatibus molestias eveniet reprehenderit maiores voluptate.
-            </p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="info_detail">
-            <h4>
-              Company
-            </h4>
-            <p class="mb-0">
-              when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
-            </p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <h4>
-            Contact Us
-          </h4>
-          <div class="info_contact">
-            <a href="">
-              <i class="fa fa-map-marker" aria-hidden="true"></i>
-              <span>
-                Location
-              </span>
-            </a>
-            <a href="">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <span>
-                Call +01 1234567890
-              </span>
-            </a>
-            <a href="">
-              <i class="fa fa-envelope"></i>
-              <span>
-                demo@gmail.com
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <h4>
-            Follow Us
-          </h4>
-          <div class="social_box">
-            <a href="">
-              <i class="fa fa-facebook" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-linkedin" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- end info_section -->
+<!-- end info_section -->
 
 
-  <!-- footer section -->
-  <footer class="footer_section">
-    <div class="container">
-      <p>
-        &copy; <span id="displayYear"></span> All Rights Reserved By
-        <a href="https://html.design/">Free Html Templates</a>
-      </p>
-    </div>
-  </footer>
-  <!-- footer section -->
+<!-- footer section -->
+<footer class="footer_section">
+  <div class="container">
+    <p>
+      &copy; <span id="displayYear"></span> Todos los derechos reservados
+      <a href="https://html.design/">Cristian Senatore web's</a>
+    </p>
+  </div>
+</footer>
+<!-- footer section -->
 
 
-  <!-- jQery -->
-  <script src="{%static 'aplicacion/js/jquery-3.4.1.min.js'%}"></script>
-  <!-- bootstrap js -->
-  <script src="{%static 'aplicacion/js/bootstrap.js'%}"></script>
-  <!-- lightbox Gallery-->
-  <script src="{%static 'aplicacion/js/ekko-lightbox.min.js'%}"></script>
-  <!-- custom js -->
-  <script src="{%static 'aplicacion/js/custom.js'%}"></script>
+<!-- jQery -->
+<script src="{%static 'aplicacion/js/jquery-3.4.1.min.js'%}"></script>
+<!-- bootstrap js -->
+<script src="{%static 'aplicacion/js/bootstrap.js'%}"></script>
+<!-- lightbox Gallery-->
+<script src="{%static 'aplicacion/js/ekko-lightbox.min.js'%}"></script>
+<!-- custom js -->
+<script src="{%static 'aplicacion/js/custom.js'%}"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
 
 
-  </body>
+</body>
 
+</html>
