@@ -1,0 +1,80 @@
+{% extends 'aplicacion/administracion.html' %}
+{% load static %}
+
+{% block contenido %}
+<div class="detail-box">
+  <div class="col-md-8 col-lg-6 mx-auto">
+    <div class="inner_detail-box">
+      <h1>
+        Peugeot Service<br>
+        
+      </h1>
+      <p>
+        Bienvenido al area de Service de Peugeot
+      </p>
+      <div>
+        <a href="{% url 'create_service' %}" class="slider-link">
+          Cargar Turnos
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<body>
+<h1>
+  Unidades 0 KM PEUGEOT
+</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Turnos</th>
+            <th>Mantenimiento</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for service in service_list %}
+        <tr>
+            <td>{{ service.id }}</td>
+            <td>{{ service.cliente }}</td>
+            <td>{{ service.turnos }}</td>
+            <td>{{ service.mantenimiento }}</td>
+            <td>
+                <a
+                 href="{% url 'detail_service' service.id %}"
+                 class="btn btn-info"
+                 style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; ---bs-btn-padding-siza: .75rem;"
+                 ><i class="fa fa-search fa-sm" title="View Record"></i>
+                </a>
+                <a
+                 href="{% url 'update_service' service.id %}"
+                 class="btn btn-primary"
+                 style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; ---bs-btn-padding-siza: .75rem;"
+                 ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                </a>
+                <a
+                 href="{% url 'delete_service' service.id %}"
+                 class="btn btn-danger"
+                 style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; ---bs-btn-padding-siza: .75rem;"
+                 ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                </a>
+            </td>
+
+        </tr>
+
+
+    </tbody>
+
+</table>
+{% endfor %}
+  
+
+
+
+{% endblock contenido %}
+  
+  </body>
+

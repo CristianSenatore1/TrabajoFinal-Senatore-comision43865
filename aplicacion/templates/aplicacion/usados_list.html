@@ -1,0 +1,84 @@
+    {% extends 'aplicacion/administracion.html' %}
+    {% load static %}
+    
+    {% block contenido %}
+    <div class="detail-box">
+      <div class="col-md-8 col-lg-6 mx-auto">
+        <div class="inner_detail-box">
+          <h1>
+            Peugeot Ventas<br>
+            
+          </h1>
+          <p>
+            Bienvenido al area de Ventas de vehiculos de Ocasion
+          </p>
+          <div>
+            <a href="{% url 'create_usado' %}" class="slider-link">
+              Cargar Unidades
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+    <body>
+    <h1>
+      Vehiculos Disponibles
+    </h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>marca</th>
+                <th>modelo</th>
+                <th>kilometraje</th>
+                <th>precio</th>
+                <th>Acciones</th>
+             </tr>
+          </thead>
+          <tbody>
+            {% for auto in usados_list %}
+            <tr>
+                <td>{{ auto.id }}</td>
+                <td>{{ auto.marca }}</td>
+                <td>{{ auto.modelo }}</td>
+                <td>{{ auto.kilometraje }}</td>
+                <td>{{ auto.precio }}</td>
+                <td>
+                    <a
+                     href="{% url 'detail_usados' auto.id %}"
+                     class="btn btn-info"
+                     style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; ---bs-btn-padding-siza: .75rem;"
+                     ><i class="fa fa-search fa-sm" title="View Record"></i>
+                    </a>
+                    <a
+                     href="{% url 'update_usado' auto.id %}"
+                     class="btn btn-primary"
+                     style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; ---bs-btn-padding-siza: .75rem;"
+                     ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                    </a>
+                    <a
+                     href="{% url 'delete_usado' auto.id %}"
+                     class="btn btn-danger"
+                     style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; ---bs-btn-padding-siza: .75rem;"
+                     ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                    </a>
+                </td>
+    
+            </tr>
+            {% endfor %}
+    
+    
+        </tbody>
+    
+    </table>
+    
+      
+    
+    
+    
+    {% endblock contenido %}
+      
+      </body>
+    
+    

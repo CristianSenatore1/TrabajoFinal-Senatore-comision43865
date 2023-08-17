@@ -1,0 +1,83 @@
+{% extends 'aplicacion/administracion.html' %}
+{% load static %}
+
+{% block contenido %}
+<div class="detail-box">
+  <div class="col-md-8 col-lg-6 mx-auto">
+    <div class="inner_detail-box">
+      <h1>
+        Peugeot 0KM<br>
+        
+      </h1>
+      <p>
+        Bienvenido al area de Ventas de Peugeot
+      </p>
+      <div>
+        <a href="{% url 'create_nuevo' %}" class="slider-link">
+          Cargar Autos
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<body>
+<h1>
+  Unidades 0 KM PEUGEOT
+</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Combustible</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for auto in nuevos_list %}
+        <tr>
+            <td>{{ auto.id }}</td>
+            <td>{{ auto.marca }}</td>
+            <td>{{ auto.modelo }}</td>
+            <td>{{ auto.combustible }}</td>
+            <td>{{ auto.precio }}</td>
+            <td>
+                <a
+                 href="{% url 'detail_nuevos' auto.id %}"
+                 class="btn btn-info"
+                 style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; ---bs-btn-padding-siza: .75rem;"
+                 ><i class="fa fa-search fa-sm" title="View Record"></i>
+                </a>
+                <a
+                 href="{% url 'update_nuevos' auto.id %}"
+                 class="btn btn-primary"
+                 style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; ---bs-btn-padding-siza: .75rem;"
+                 ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                </a>
+                <a
+                 href="{% url 'delete_nuevos' auto.id %}"
+                 class="btn btn-danger"
+                 style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; ---bs-btn-padding-siza: .75rem;"
+                 ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                </a>
+            </td>
+
+        </tr>
+        {% endfor %}
+
+
+    </tbody>
+
+</table>
+
+  
+
+
+
+{% endblock contenido %}
+  
+  </body>
+
