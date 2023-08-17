@@ -7,4 +7,17 @@
     <input type="submit" value="Enviar">
   </form>
 {% endblock formulario %}
-  
+
+<div class="form_container">
+  <div class="heading_container ">
+    <h2>
+      CONTACTANOS
+    </h2>
+  </div>
+  <form method="post">
+    {% csrf_token%}
+    {{ form.as_div }}
+    <input type="submit" value="Enviar">
+  </form>
+
+</div>

@@ -8,6 +8,9 @@ from django.views.generic import CreateView
 from django.views.generic import DetailView
 from django.views.generic import UpdateView
 from django.views.generic import DeleteView
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 #-----------------------
 
@@ -23,70 +26,102 @@ def index(request):
         form = ContactoForm()
 
     return render(request, 'aplicacion/base.html',{'form':form})
-class NuevosList(ListView):
+class NuevosList(LoginRequiredMixin,ListView):
     model = Nuevos
-class UsadosList(ListView):
+class UsadosList(LoginRequiredMixin,ListView):
     model = Usados
-class ServiceList(ListView):
+class ServiceList(LoginRequiredMixin,ListView):
     model = Service
-class AdministracionList(ListView):
+class AdministracionList(LoginRequiredMixin,ListView):
     model = Administracion
 #----------------------
-class UsadosCreate(CreateView):
+class UsadosCreate(LoginRequiredMixin,CreateView):
     model = Usados
     fields = '__all__'
     success_url = reverse_lazy('usados')
-class NuevosCreate(CreateView):
+class NuevosCreate(LoginRequiredMixin,CreateView):
     model = Nuevos
     fields = '__all__'
     success_url = reverse_lazy('nuevos')
-class ServiceCreate(CreateView):
+class ServiceCreate(LoginRequiredMixin,CreateView):
     model = Service
     fields = '__all__'
     success_url = reverse_lazy('service')
-class AdministracionCreate(CreateView):
+class AdministracionCreate(LoginRequiredMixin,CreateView):
     model = Administracion
     fields = '__all__'
     success_url = reverse_lazy('administracion')
 #----------------------
-class ServiceDetail(DetailView):
+class ServiceDetail(LoginRequiredMixin,DetailView):
     model = Service
-class NuevosDetail(DetailView):
+class NuevosDetail(LoginRequiredMixin,DetailView):
     model = Nuevos
-class UsadosDetail(DetailView):
+class UsadosDetail(LoginRequiredMixin,DetailView):
     model = Usados
-class AdministracionDetail(DetailView):
+class AdministracionDetail(LoginRequiredMixin,DetailView):
     model = Administracion
-#-------------------------------------
+#--------------------------------
 
-class UsadosUpdate(UpdateView):
+class UsadosUpdate(LoginRequiredMixin,UpdateView):
     model = Usados
     fields = '__all__'
     success_url = reverse_lazy('usados')
-class NuevosUpdate(UpdateView):
+class NuevosUpdate(LoginRequiredMixin,UpdateView):
     model = Nuevos
     fields = '__all__'
     success_url = reverse_lazy('nuevos')
-class ServiceUpdate(UpdateView):
+class ServiceUpdate(LoginRequiredMixin,UpdateView):
     model = Service
     fields = '__all__'
     success_url = reverse_lazy('service')
-class AdministracionUpdate(UpdateView):
+class AdministracionUpdate(LoginRequiredMixin,UpdateView):
 
     model = Administracion
     fields = '__all__'
     success_url = reverse_lazy('administracion')
 #--------------------------------
-class UsadosDelete(DeleteView):
+class UsadosDelete(LoginRequiredMixin,DeleteView):
     model = Usados
     success_url = reverse_lazy('usados')
-class NuevosDelete(DeleteView):
+class NuevosDelete(LoginRequiredMixin,DeleteView):
     model = Nuevos
     success_url = reverse_lazy('nuevos')
-class ServiceDelete(DeleteView):
+class ServiceDelete(LoginRequiredMixin,DeleteView):
     model = Service
     success_url = reverse_lazy('service')
-class AdministracionDelete(DeleteView):
+class AdministracionDelete(LoginRequiredMixin,DeleteView):
     model = Administracion
     success_url = reverse_lazy('administracion')
+#--------------------------------
+
+def login_request(request):
+    if request.method == "POST":
+        miForm = AuthenticationForm(request, data=request.POST)
+        if miForm.is_valid():
+            usuario = miForm.cleaned_data.get('username')
+            clave = miForm.cleaned_data.get('password')
+            user = authenticate(username=usuario, password=clave)
+            if user is not None:
+                login(request, user)
+                return render(request, 'aplicacion/base.html',{"mensaje":f"Bienvenido{usuario}"})
+            else:
+                return render(request, 'aplicacion/login.html',{"form":miForm,"mensaje":"Datos Inválidos"})
+        else:
+            return render(request, 'aplicacion/login.html',{"form":miForm,"mensaje":"Datos Inválidos"})
+        
+    miForm = AuthenticationForm()
+    return render (request, 'aplicacion/login.html',{"form":miForm})
+
+def register (request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            usuario = form.cleaned_data.get("username")
+            form.save()
+            return render(request, "aplicacion/base.html",{"mensaje":"Usuario creado con Exito"})
+    else:
+        form = UserCreationForm()
+
+    return render (request, 'aplicacion/registro.html',{"form":form})
+
 
