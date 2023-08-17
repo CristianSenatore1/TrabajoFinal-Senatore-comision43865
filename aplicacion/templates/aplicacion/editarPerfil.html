@@ -1,0 +1,27 @@
+{% extends 'aplicacion/administracion.html' %}
+{% load static %}
+{% block contenido %}
+    <div class="detail-box">
+      <div class="col-md-8 col-lg-6 mx-auto">
+        <div class="inner_detail-box">
+          <h1>
+            Editar Perfil {{usuario}}<br>
+            
+          </h1>
+          <p>
+            Aqui podras Editarr todos los datos de tu Perfil
+          </p>
+          <br>
+          <form action="" mrthod="POST">
+            {% csrf_token %}
+            <table>
+            {{ form.as_table}}
+            </table>
+            <button type="submit"> Actualizar Usuario</button>
+           </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <body>
+{% endblock contenido%}

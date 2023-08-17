@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
-from .models import Nuevos ,Usados ,Service , Administracion
+from .models import Avatar, Nuevos ,Usados ,Service , Administracion
 from .forms import *
 from django.views.generic import ListView
 from django.views.generic import CreateView
@@ -11,6 +11,7 @@ from django.views.generic import DeleteView
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 #-----------------------
 
@@ -125,3 +126,43 @@ def register (request):
     return render (request, 'aplicacion/registro.html',{"form":form})
 
 
+@login_required
+def editarPerfil(request):
+    usuario = request.user
+    if request.method == "POST":
+        form = UserEditForm(request.POST)
+        if form.is_valid():
+            usuario.email = form.cleaned_data.get('email')
+            usuario.password1 = form.cleaned_data.get('password1')
+            usuario.password2 = form.cleaned_data.get('password2')
+            usuario.first_name = form.cleaned_data.get('first_name')
+            usuario.last_name = form.cleaned_data.get('last_name')
+            usuario.save()
+            return render(request, "aplicacion/base.html", {'mensaje':f"Usuario{usuario.username} actualizado correctamente"})
+        else:
+            return render(request,"aplicacion/editarPerfil.html",{'form':form})
+    else:
+        form = UserEditForm(instance=usuario)
+    return render (request, "aplicacion/editarPerfil.html",{'form':form, 'usuario':usuario.username})
+
+@login_required
+def agregarAvatar(request):
+    if request.method == "POST":
+        form = AvatarFormulario(request.POST, request.FILES)
+        if form.is_valid():
+            u = User.objects.get(username=request.user)
+            avatarViejo = Avatar.objects.filter(user=u)
+            if len(avatarViejo)>0:
+                avatarViejo[0].delete()
+            
+            avatar = Avatar(user=u, imagen=form.cleaned_data['imagen'])
+            avatar.save()
+
+            imagen = Avatar.objects.get(user=request.user.id).imagen.url
+            request.session['avatar'] = imagen
+
+            return render(request, "aplicacion/base.html")
+            return render(request,"aplicacion/editarPerfil.html",{'form':form})
+    else:
+        form = AvatarFormulario()
+    return render (request, "aplicacion/agregarAvatar.html",{'form':form})

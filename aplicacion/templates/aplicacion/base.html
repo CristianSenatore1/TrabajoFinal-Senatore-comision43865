@@ -67,6 +67,9 @@
                 <a href="{% url 'nuevos'%}">Nuevos</a>
                 <a href="{% url 'administracion'%}">Administracion</a>
                 <h2 style="color:green">Bienvenid@ {{user.username|upper}}</h2>
+                <div class="text-center">
+                  <img src="{{request.session.avatar}}" height="40px" weight="40px"/>
+                </div>
                 <a href="{% url 'logout'%}">Logout</a>
 
 
